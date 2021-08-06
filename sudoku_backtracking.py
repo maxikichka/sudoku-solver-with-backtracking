@@ -12,7 +12,15 @@
 #https://www.tutorialspoint.com/introduction-to-backtracking-algorithms
 
 
-board = [[0, 3, 2, 0, 0, 5, 9, 0, 0], [6, 8, 0, 0, 0, 0, 4, 7, 0], [4, 9, 0, 0, 7, 0, 3, 1, 2], [2, 5, 0, 0, 9, 7, 8, 3, 0], [0, 0, 6, 3, 5, 0, 7, 0, 0], [0, 0, 3, 1, 2, 0, 6, 5, 4], [0, 4, 9, 0, 6, 1, 0, 0, 0], [5, 0, 0, 0, 4, 3, 1, 0, 0], [1, 0, 0, 0, 0, 0, 0, 4, 0]]
+board = [[0, 3, 2, 0, 0, 5, 9, 0, 0], 
+         [6, 8, 0, 0, 0, 0, 4, 7, 0], 
+         [4, 9, 0, 0, 7, 0, 3, 1, 2], 
+         [2, 5, 0, 0, 9, 7, 8, 3, 0], 
+         [0, 0, 6, 3, 5, 0, 7, 0, 0], 
+         [0, 0, 3, 1, 2, 0, 6, 5, 4], 
+         [0, 4, 9, 0, 6, 1, 0, 0, 0], 
+         [5, 0, 0, 0, 4, 3, 1, 0, 0], 
+         [1, 0, 0, 0, 0, 0, 0, 4, 0]]
 
 
 import os
@@ -36,7 +44,6 @@ squareSize = WIDTH//9
 
 def buildBoard():
     global start
-
     
     for i in range(len(pixels)):
         for j in range(len(pixels[i])):
@@ -48,10 +55,6 @@ def buildBoard():
 
     solve()
 
-        
-    
-
-
 def askUserForBoard():
     global pixels, root
 
@@ -60,8 +63,6 @@ def askUserForBoard():
     root = Tk()
 
     root.title("Make Board")
-
-    
 
     for i in range(9):
         pixels.append([])
@@ -80,7 +81,6 @@ def askUserForBoard():
 
 def done():
     end = time.time()
-
 
     main = True
 
@@ -108,8 +108,7 @@ def done():
         pygame.draw.line(win, (0, 0, 0), (0, (HEIGHT- 100)//3), (WIDTH, (HEIGHT-100)//3), 7)
 
         pygame.draw.line(win, (0, 0, 0), (0, (HEIGHT-100)//3*2), (WIDTH, (HEIGHT-100)//3*2), 7)
-
-            
+        
 
         text = font.render("Finished in : " + str(end-start), True, (0, 0, 0))
 
@@ -121,7 +120,6 @@ def done():
 
         pygame.display.update()
     pygame.quit()
-
 
 def solve():
     
@@ -136,7 +134,6 @@ def solve():
 
     win.fill((255, 255, 255))
 
-    
     draw_board(value)
 
     for event in pygame.event.get():
@@ -153,10 +150,7 @@ def solve():
 
             board[row][col] = 0
     pygame.display.update()
-
-
     return False
-
 
 def isValid(numG, row, col):
 
@@ -176,9 +170,6 @@ def isValid(numG, row, col):
             for m in range(startY, startY + 3):
                 if board[x][m] == numG:
                     return False
-
-
-
 
     return True
 
